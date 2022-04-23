@@ -26,7 +26,7 @@ echo "answer is $answer"
 if [[ $answer == [Nn] ]]
 then
 	echo "Existing HFA System....got it."
-else if [[ $answer == [Yy] ]]
+elif [[ $answer == [Yy] ]]
 then
 	echo "New Install....got it."
 	# Set some house-keeping
