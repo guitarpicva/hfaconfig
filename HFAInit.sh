@@ -17,15 +17,18 @@ cd ~/hfaconfig
 # Show the list of existing files
 ll
 # Set all scripts to be executable
-chmod +x *.sh
+chmod u+x *.sh
 # Query the user to see if we need to do the first time compiling
-answer="N"
 read -p "Is this an initial installation on a clean RPi OS? (y/N) " answer
+# only take the first letter of the reply
 answer=${answer:0:1}
-echo "answer is $answer"
+#echo "answer is $answer"
 if [[ $answer == [Nn] || -z $answer ]]
 then
 	echo "Existing HFA System....got it."
+	echo ""
+	echo "This is where we would copy over new config files, alerts files, etc."
+	echo ""
 elif [[ $answer == [Yy] ]]
 then
 	echo "New Install....got it."

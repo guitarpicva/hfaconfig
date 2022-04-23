@@ -1,10 +1,10 @@
 #!/bin/bash
 #############################################
-# Direwolf latest build for RPi2/3/4
+# Hamlib-Direwolf latest builds for RPi2/3/4
+#
 # This script is intended for a clean
 # RPi OS installation with no previous
-# changes made to it, other than enabling
-# SSH server on startup.  This will run
+# changes made to it.  This will run
 # on an RPi OS Lite version (headless), and 
 # that is the intended purpose, so even the 
 # RPi2 B+ may be used.
