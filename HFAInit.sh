@@ -7,9 +7,7 @@
 # Author, Mitch Winkle AB4MW 2022-04-23
 ########################################################################
 # If not there, make it
-#mkdir -p ~/hfaconfig
-#cd ~
-#git clone https://github.com/guitarpicva/hfaconfig.git
+mkdir -p ~/hfaconfig
 cd ~/hfaconfig
 #
 # This gives us all of the configuration files for our system in the
@@ -26,7 +24,8 @@ read -p "Is this an initial installation on a clean RPi OS? (y/N) " answer
 if [[ $answer == [Nn]* ]]
 then
 	echo "Existing HFA System....got it."
-else 
+else if [[ $answer == [Yy]* ]]
+then
 	echo "New Install....got it."
 	# Set some house-keeping
 	echo "Set alias for ll to ls -lA in .bashrc"
