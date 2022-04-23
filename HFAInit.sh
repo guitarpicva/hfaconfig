@@ -16,17 +16,20 @@ cd ~/hfaconfig
 # ~/hfaconfig directory, which is where cron and other programs will
 # find their configuration files (direwolf.conf, etc.)
 #
-# Set some house-keeping
-echo "alias ll='ls -lA --color=auto'" >> ~/.bashrc
 # Show the list of existing files
 ll
 # Set all scripts to be executable
 chmod +x *.sh
 # Query the user to see if we need to do the first time compiling
-read -p "Is this an initial installation on a clean RPi OS? (Y/n)" itsnew
+answer="Y"
+read -p "Is this an initial installation on a clean RPi OS? (Y/n)" answer
 if(answer -eq "Y" || answer -eq "y" || answer -eq '')
 {
 	echo "New Install....got it."
+	# Set some house-keeping
+	echo "Set alias for ll to ls -lA in .bashrc
+	echo "alias ll='ls -lA --color=auto'" >> ~/.bashrc
+
 }
 else {
 	echo "Existing HFA System....got it."
