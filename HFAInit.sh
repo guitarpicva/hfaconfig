@@ -38,4 +38,3 @@ then
 	# Run the clone and compile script HamlibDirewolfBuild.sh
 	~/hfaconfig/HamlibDirewolfBuild.sh
 fi
-exit 0
