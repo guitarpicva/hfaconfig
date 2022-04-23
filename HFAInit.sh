@@ -18,3 +18,4 @@ ls -lA --color=auto
 # ~/hfaconfig directory, which is where cron and other programs will
 # find their configuration files (direwolf.conf, etc.)
 #
+# Add a line to see if git fetch works
