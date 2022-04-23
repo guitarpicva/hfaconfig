@@ -11,6 +11,7 @@
 #
 # Author Mitch Winkle, AB4MW 2022-04-22
 #############################################
+START_TIME=$(date +%s)
 mkdir ~/src
 cd ~/src
 #############################################
@@ -59,5 +60,7 @@ echo "Direwolf installation is complete.  It's time to edit the direwolf.conf fi
 echo ""
 cd ~
 echo "Use \"nano direwolf.conf\" to edit the file."
+END_TIME=$(date +%s)
+echo "It took $(($END_TIME - $START_TIME)) seconds to do this work!"
 exit 0
 
