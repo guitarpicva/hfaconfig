@@ -31,6 +31,10 @@ else
 	# Set some house-keeping
 	echo "Set alias for ll to ls -lA in .bashrc"
 	#echo "alias ll='ls -lA --color=auto'" >> ~/.bashrc
+	echo "Starting sshd server..."
+	sudo systemctl enable ssh
+	sudo systemctl start sshd
 	# Run the clone and compile script HamlibDirewolfBuild.sh
-	~/hfaconfig/HamlibdirewolfBuild.sh
+	~/hfaconfig/HamlibDirewolfBuild.sh
 fi
+exit 0
