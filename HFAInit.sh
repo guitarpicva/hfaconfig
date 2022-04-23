@@ -21,11 +21,12 @@ chmod +x *.sh
 # Query the user to see if we need to do the first time compiling
 answer="N"
 read -p "Is this an initial installation on a clean RPi OS? (y/N) " answer
+answer=$answer[0]
 echo "answer is $answer"
-if [[ $answer == [Nn]* ]]
+if [[ $answer == [Nn] ]]
 then
 	echo "Existing HFA System....got it."
-else if [[ $answer == [Yy]* ]]
+else if [[ $answer == [Yy] ]]
 then
 	echo "New Install....got it."
 	# Set some house-keeping
