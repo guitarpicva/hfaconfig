@@ -16,7 +16,7 @@ echo ""
 echo "Do NOT run this on an existing HF Alerting system unless instructed to.
 echo ""
 answer="N"
-read "Continue? (y/N) " answer
+read -p "Continue? (y/N) " answer
 if [[ $answer == [Nn]* ]]
 then 
 exit 0
