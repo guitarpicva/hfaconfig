@@ -32,5 +32,5 @@ else
 	echo "Set alias for ll to ls -lA in .bashrc"
 	#echo "alias ll='ls -lA --color=auto'" >> ~/.bashrc
 	# Run the clone and compile script HamlibDirewolfBuild.sh
-	./HamlibdirewolfBuild.sh
+	~/hfaconfig/HamlibdirewolfBuild.sh
 fi

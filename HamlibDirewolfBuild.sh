@@ -11,6 +11,16 @@
 #
 # Author Mitch Winkle, AB4MW 2022-04-22
 #############################################
+echo "This script will download and install Hamlib and Direwolf, and compile them both."
+echo ""
+echo "Do NOT run this on an existing HF Alerting system unless instructed to.
+echo ""
+answer="N"
+read "Continue? (y/N) " answer
+if [[ $answer == [Nn]* ]]
+then 
+exit 0
+fi
 START_TIME=$(date +%s)
 mkdir -p ~/src
 cd ~/src
