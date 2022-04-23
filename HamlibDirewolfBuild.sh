@@ -8,7 +8,6 @@
 # on an RPi OS Lite version (headless), and 
 # that is the intended purpose, so even the 
 # RPi2 B+ may be used.
-#
 # Author Mitch Winkle, AB4MW 2022-04-22
 #############################################
 echo "This script will download and install Hamlib and Direwolf, and compile them both."
