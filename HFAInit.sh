@@ -27,7 +27,7 @@ if(answer -eq "Y" || answer -eq "y" || answer -eq '')
 {
 	echo "New Install....got it."
 	# Set some house-keeping
-	echo "Set alias for ll to ls -lA in .bashrc
+	echo "Set alias for ll to ls -lA in .bashrc"
 	echo "alias ll='ls -lA --color=auto'" >> ~/.bashrc
 
 }
