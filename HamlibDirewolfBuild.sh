@@ -13,7 +13,7 @@
 #############################################
 echo "This script will download and install Hamlib and Direwolf, and compile them both."
 echo ""
-echo "Do NOT run this on an existing HF Alerting system unless instructed to.
+echo "Do NOT run this on an existing HF Alerting system unless instructed to."
 echo ""
 answer="N"
 read -p "Continue? (y/N) " answer
