@@ -23,12 +23,12 @@ chmod +x *.sh
 # Query the user to see if we need to do the first time compiling
 answer="Y"
 read -p "Is this an initial installation on a clean RPi OS? (Y/n) " answer
-if [[ $answer == [Nn] ]] {
+if [[ $answer == [Nn] ]]
+then
 	echo "Existing HFA System....got it."
-}
-else {
+else 
 	echo "New Install....got it."
 	# Set some house-keeping
 	echo "Set alias for ll to ls -lA in .bashrc"
 	echo "alias ll='ls -lA --color=auto'" >> ~/.bashrc
-}
+fi
