@@ -21,9 +21,9 @@ ll
 # Set all scripts to be executable
 chmod +x *.sh
 # Query the user to see if we need to do the first time compiling
-answer="Y"
+answer="N"
 read -p "Is this an initial installation on a clean RPi OS? (Y/n) " answer
-if [[ $answer == [Nn] ]]
+if [[ $answer == [Nn]* ]]
 then
 	echo "Existing HFA System....got it."
 else 
