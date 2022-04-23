@@ -23,7 +23,7 @@ answer="N"
 read -p "Is this an initial installation on a clean RPi OS? (y/N) " answer
 answer=${answer:0:1}
 echo "answer is $answer"
-if [[ $answer == [Nn] ]]
+if [[ $answer == [Nn] || $answer -z ]]
 then
 	echo "Existing HFA System....got it."
 elif [[ $answer == [Yy] ]]
