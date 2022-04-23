@@ -7,14 +7,27 @@
 # Author, Mitch Winkle AB4MW 2022-04-23
 ########################################################################
 # If not there, make it
-mkdir -p ~/hfaconfig
-cd ~
-git clone https://github.com/guitarpicva/hfaconfig.git
+#mkdir -p ~/hfaconfig
+#cd ~
+#git clone https://github.com/guitarpicva/hfaconfig.git
 cd ~/hfaconfig
-# Show the list of files
-ls -lA --color=auto
 #
 # This gives us all of the configuration files for our system in the
 # ~/hfaconfig directory, which is where cron and other programs will
 # find their configuration files (direwolf.conf, etc.)
 #
+# Set some house-keeping
+echo "alias ll='ls -lA --color=auto'" >> ~/.bashrc
+# Show the list of existing files
+ll
+# Set all scripts to be executable
+chmod +x *.sh
+# Query the user to see if we need to do the first time compiling
+read -p "Is this an initial installation on a clean RPi OS? (Y/n)" itsnew
+if(answer -eq "Y" || answer -eq "y" || answer -eq '')
+{
+	echo "New Install....got it."
+}
+else {
+	echo "Existing HFA System....got it."
+}

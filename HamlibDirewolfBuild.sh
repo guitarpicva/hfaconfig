@@ -5,14 +5,14 @@
 # RPi OS installation with no previous
 # changes made to it, other than enabling
 # SSH server on startup.  This will run
-# completely on an RPi OS Lite version
-# (headless), and that is the intended
-# purpose, so even the RPi2 B+ may be used.
+# on an RPi OS Lite version (headless), and 
+# that is the intended purpose, so even the 
+# RPi2 B+ may be used.
 #
 # Author Mitch Winkle, AB4MW 2022-04-22
 #############################################
 START_TIME=$(date +%s)
-mkdir ~/src
+mkdir -p ~/src
 cd ~/src
 #############################################
 # Install required packages to a clean RPi OS box
