@@ -35,7 +35,21 @@ then
 	# Set some house-keeping
 	echo "Set alias for ll to ls -lA in .bashrc"
 	#echo "alias ll='ls -lA --color=auto'" >> ~/.bashrc
-	echo "Starting sshd server..."
+	echo "Turn off bcm audio and HDMI audio"
+	bmcline=grep /boot/config.txt 'dtparam=audio=on'
+	echo "BCM Audio Setting: $bcmline"
+	bcmline=${bcmline:0:1}
+	if [[ $bcmline != [#] ]]
+	then
+	# use sed to remove the leading "#" from dtparam audio=off
+	sudo sed -i 's/dtparam=audio=on/#dtparam=audio=on/g' /boot/config.txt
+	fi
+	# append a line to turn off the HDMI audio since it will never be used
+	# in a headless RPi
+	# first delete any existing line
+	sudo sed -i '/dtoverlay=vc4-kms-v3d/d' /boot/config.txt
+	sudo sed -i '$a dtoverlay=vc4-kms-v3d,audio=off' /boot/config.txt
+	echo "Enabling and Starting sshd server..."
 	sudo systemctl enable ssh
 	sudo systemctl start sshd
 	# Run the clone and compile script HamlibDirewolfBuild.sh
