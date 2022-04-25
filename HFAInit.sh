@@ -15,7 +15,7 @@ cd ~/hfaconfig
 # find their configuration files (direwolf.conf, etc.)
 #
 # Show the list of existing files
-ll
+ls -lA --color=auto
 # Set all scripts to be executable
 chmod u+x *.sh
 # Query the user to see if we need to do the first time compiling
