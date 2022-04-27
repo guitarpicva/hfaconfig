@@ -10,7 +10,7 @@
 # RPi2 B+ may be used.
 # Author Mitch Winkle, AB4MW 2022-04-22
 #############################################
-echo "This script will download and install Hamlib and Direwolf, and compile them both."
+echo "This script will download, compile and install Hamlib and Direwolf."
 echo ""
 echo "Do NOT run this on an existing HF Alerting system unless instructed to."
 echo ""
@@ -62,9 +62,15 @@ mv ~/direwolf.conf ~/direwolf.conf.example
 #############################################
 cd ~
 END_TIME=$(date +%s)
-echo "It took $(($END_TIME - $START_TIME)) seconds to do this work!"
+secs=$(( $END_TIME - $START_TIME ))
+mins=$(( $secs / 60 ))
+secs=$(( $secs % 60 ))
+if [ $secs -lt 10 ]; then secs="0$secs"; fi
+echo "TIME:$mins:$secs"
+echo "It took $mins:$secs to do the cloning and compiling and installing."
 wait 1
-echo "Direwolf installation is complete.  It's time to build the direwolf.conf file."
+echo "Hamlib and Direwolf installation is complete."
+echo "It's time to build the direwolf.conf file."
 echo "First, let's gather the station call sign."
 echo ""
 read -p "Enter this station's VOICE call sign: " mycall
