@@ -27,8 +27,8 @@ if [[ $answer == [Nn] || -z $answer ]]
 then
 	echo "Existing HFA System....got it."
 	echo ""
-	echo "This is where we would copy over new config files, alerts files, etc."
-	echo ""
+	echo "This is where we would copy over new config files, alerts files, etc"
+	echo "with an update script."
 elif [[ $answer == [Yy] ]]
 then
 	echo "New Install....got it."
@@ -52,6 +52,27 @@ then
 	echo "Enabling and Starting sshd server..."
 	sudo systemctl enable ssh
 	sudo systemctl start sshd
+	# 
+	# Now create the basic direwolf.conf file for the mosquitto broker.
+	# This file is placed into /etc/mosquitto/conf.d/direwolf.conf
+	# THIS IS NOT THE DIREWOLF CONFIGURATION FILE!  This is the MQTT
+	# broker's configuration file, but we are using it with direwolf
+	# hence the name.
+	echo "Setting up MQTT broker (mosquitto) on all local interfaces."
+	sudo echo "listener 1883" > /etc/mosquitto/conf.d/direwolf.conf
+	sudo echo "protocol mqtt" >> /etc/mosquitto/conf.d/direwolf.conf
+	sudo echo "#" >> /etc/mosquitto/conf.d/direwolf.conf
+	sudo echo "connection hfabridge" >> /etc/mosquitto/conf.d/direwolf.conf
+	sudo echo "address rpi0.homeip.net:8883" >> /etc/mosquitto/conf.d/direwolf.conf
+	# bi-directional bridging of all things "alert"
+	sudo echo "topic alert/# both"
+	# bridge credentials
+	sudo echo "remote_username Eph8Iequiesaexah"
+	sudo echo "remote_password Dahshie1eevooCah"
+	# just in case it got turned off somehow, it doesn't hurt to enable it
+	sudo systemctl enable mosquitto
+	# pick up the new configuration file
+	sudo systemctl restart mosquitto
 	# Run the clone and compile script HamlibDirewolfBuild.sh
 	~/hfaconfig/HamlibDirewolfBuild.sh
 fi
