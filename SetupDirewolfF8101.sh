@@ -13,13 +13,13 @@ fi
 # make it upper case
 mycall=${mycall^^}
 # it's a fair bet that the F8101 is the only sound card
-# connected and the only one with this signature
+# connected with this signature
 sounders=$( aplay -l|grep 'USB Audio CODEC' )
 sounders=${sounders:5:1}
 
 serial=$( ls /dev/serial/by-id|grep _B-if00 )
 cd ~
-ln -s "/dev/serial/by-id/$serial" ~/radio
+sudo ln -s "/dev/serial/by-id/$serial" /dev/f8101_civ
 
 echo "ADEVICE  plughw:$sounders,0" > ~/direwolf.conf
 echo "CHANNEL 0" >> ~/direwolf.conf
@@ -28,7 +28,7 @@ echo "MODEM 300 1600:1800 3@20" >> ~/direwolf.conf
 # "radio" corresponds to a symlink in the home
 # folder which points to the proper device from
 # /dev/serial/by-id
-echo "PTT RIG 3086 radio" >> ~/direwolf.conf
+echo "PTT RIG 3086 /dev/f8101_civ 38400" >> ~/direwolf.conf
 # a short TXDELAY of 30 ms
 echo "TXDELAY 3" >> ~/direwolf.conf
 # turn off the AGWPORT
