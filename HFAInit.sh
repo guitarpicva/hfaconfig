@@ -41,7 +41,7 @@ then
 	bcmline=${bcmline:0:1}
 	if [[ $bcmline != [#] ]]
 	then 
-	# use sed to remove the leading "#" from dtparam audio=off
+	# use sed to remove the leading "#" from dtparam audio=off 
 	sudo sed -i 's/dtparam=audio=on/#dtparam=audio=on/g' /boot/config.txt
 	fi
 	# append a line to turn off the HDMI audio since it will never be used
