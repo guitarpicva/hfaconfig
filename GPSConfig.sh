@@ -20,3 +20,7 @@ sudo echo 'GPSD_OPTIONS="-n"' >> /etc/default/gpsd.orig
 # Now restart everything
 sudo systemctl restart gpsd
 sudo systemctl restart chrony
+#
+# Direwolf needs a line to gather the position information
+echo "GPSD localhost" >> ~/direwolf.conf
+exit 0
