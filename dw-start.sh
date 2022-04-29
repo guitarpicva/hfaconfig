@@ -42,7 +42,7 @@ DIREWOLF="/usr/local/bin/direwolf"
 #    Change this command to however you wish to start Direwolf
 
 # run this instance in IL2P mode on transmit!!!!
-DWCMD="$DIREWOLF -I 1"
+DWCMD="$DIREWOLF -I 1 -q hdx -d om"
 
 # 2. FX.25 Forward Error Correction (FEC) will allow your signal to
 #    go farther under poor radio conditions.  Add "-X 1" to the command line.
