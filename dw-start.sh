@@ -1,11 +1,4 @@
-#!/usr/bin/env bash
-
-# Why not simply "#!/bin/bash" ?
-
-# For OpenBSD, the bash location is /usr/local/bin/bash.
-# By using env here, bash is found based on the user's $PATH.
-# I hope this does not break some other operating system.
-
+#!/bin/bash
 
 # Run this from crontab periodically to start up
 # Dire Wolf automatically.
@@ -14,7 +7,6 @@
 # For release 1.4 it is section 5.7 "Automatic Start Up After Reboot"
 # but it could change in the future as more information is added.
 
-
 # Versioning (this file, not direwolf version)
 #-----------
 # v1.3 - KI6ZHD - added variable support for direwolf binary location
@@ -22,8 +14,6 @@
 # v1.1 - KI6ZHD - expanded version to support running on text-only displays with
 #        auto support; log placement change
 # v1.0 - WB2OSZ - original version for Xwindow displays only
-
-
 
 #How are you running Direwolf : within a GUI (Xwindows / VNC) or CLI mode
 #
@@ -51,6 +41,7 @@ DIREWOLF="/usr/local/bin/direwolf"
 #    Print audio statistics each 100 seconds for troubleshooting.
 #    Change this command to however you wish to start Direwolf
 
+# run this instance in IL2P mode on transmit!!!!
 DWCMD="$DIREWOLF -I 1"
 
 # 2. FX.25 Forward Error Correction (FEC) will allow your signal to
@@ -68,6 +59,7 @@ DWCMD="$DIREWOLF -I 1"
 
 
 #Where will logs go - needs to be writable by non-root users
+# Put the log in the home folder so it's easy to find
 LOGFILE=~/dwstart.log
 
 
@@ -91,7 +83,7 @@ function CLI {
    # Screen commands
    #  -d m :: starts the command in detached mode
    #  -S   :: name the session
-   $SCREEN -d -m -S direwolf $DWCMD >> $LOGFILE
+   $SCREEN -dmS direwolf $DWCMD >> $LOGFILE
    SUCCESS=1
 
    $SCREEN -list direwolf
@@ -153,7 +145,13 @@ function GUI {
 # -----------------------------------------------------------
 # Main Script start
 # -----------------------------------------------------------
-
+# ensure that the CI-V serial port is created
+# if the link is not there, make it again
+if [ ! -e /dev/f8101_civ ]
+then
+    serial=$( ln /dev/serial/by-id|grep _B-if )
+    sudo ln -s /dev/serial/by-id/$serial /dev/f8101_civ
+fi
 # When running from cron, we have a very minimal environment
 # including PATH=/usr/bin:/bin.
 #
@@ -165,8 +163,7 @@ date >> $LOGFILE
 # First wait a little while in case we just rebooted
 # and the desktop hasn't started up yet.
 #
-sleep 30
-
+sleep 10
 
 #
 # Nothing to do if Direwolf is already running.
