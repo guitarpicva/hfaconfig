@@ -73,6 +73,27 @@ mv ~/direwolf.conf ~/direwolf.conf.example
 #############################################
 # Cleanup
 #############################################
+	# 
+	# Now create the basic direwolf.conf file for the mosquitto broker.
+	# This file is placed into /etc/mosquitto/conf.d/direwolf.conf
+	# THIS IS NOT THE DIREWOLF CONFIGURATION FILE!  This is the MQTT
+	# broker's configuration file, but we are using it with direwolf
+	# hence the name.
+	echo "Setting up MQTT broker (mosquitto) on all local interfaces."
+	sudo echo "listener 1883" > /etc/mosquitto/conf.d/direwolf.conf
+	sudo echo "protocol mqtt" >> /etc/mosquitto/conf.d/direwolf.conf
+	sudo echo "#" >> /etc/mosquitto/conf.d/direwolf.conf
+	sudo echo "connection hfabridge" >> /etc/mosquitto/conf.d/direwolf.conf
+	sudo echo "address rpi0.homeip.net:8883" >> /etc/mosquitto/conf.d/direwolf.conf
+	# bi-directional bridging of all things "alert"
+	sudo echo "topic alert/# both" >> /etc/mosquitto/conf.d/direwolf.conf
+	# bridge credentials
+	sudo echo "remote_username Eph8Iequiesaexah" >> /etc/mosquitto/conf.d/direwolf.conf
+	sudo echo "remote_password Dahshie1eevooCah" >> /etc/mosquitto/conf.d/direwolf.conf
+	# just in case it got turned off somehow, it doesn't hurt to enable it
+	sudo systemctl enable mosquitto
+	# pick up the new configuration file
+	sudo systemctl restart mosquitto
 cd ~
 END_TIME=$(date +%s)
 secs=$(( $END_TIME - $START_TIME ))

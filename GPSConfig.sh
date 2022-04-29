@@ -17,7 +17,7 @@ sudo echo 'DEVICES="/dev/ttyACM0"' >> /etc/default/gpsd.orig
 sudo echo 'GPSD_OPTIONS="-n"' >> /etc/default/gpsd.orig
 #
 #
-# Now restart everything
+# Now restart everything 
 sudo systemctl restart gpsd
 sudo systemctl restart chrony
 #

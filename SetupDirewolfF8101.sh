@@ -11,7 +11,7 @@ else
     mycall=$1
 fi
 # make it upper case
-mycall=${mycall^^}
+mycall=${mycall^^} 
 # it's a fair bet that the F8101 is the only sound card
 # connected with this signature
 sounders=$( aplay -l|grep 'USB Audio CODEC' )
