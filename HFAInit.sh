@@ -40,7 +40,7 @@ then
 	echo "BCM Audio Setting: $bcmline"
 	bcmline=${bcmline:0:1}
 	if [[ $bcmline != [#] ]]
-	then
+	then 
 	# use sed to remove the leading "#" from dtparam audio=off
 	sudo sed -i 's/dtparam=audio=on/#dtparam=audio=on/g' /boot/config.txt
 	fi
