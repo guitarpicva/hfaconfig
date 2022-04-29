@@ -62,11 +62,6 @@ then
 	echo "Enabling and Starting sshd server..."
 	sudo systemctl enable ssh
 	sudo systemctl start sshd
-	# add a line to the crontab to auto-start/check direwolf each minute
-	# without fear of duplication in the crontab
-	croncmd="~/hfaconfig/dw-start.sh"
-	cronjob="* * * * * $croncmd"
-	( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 	# Run the clone-and-compile script HamlibDirewolfBuild.sh
 	. ~/hfaconfig/HamlibDirewolfBuild.sh
 fi

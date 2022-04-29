@@ -40,6 +40,11 @@ echo "TXDELAY 3" >> ~/direwolf.conf
 echo "AGWPORT 0" >> ~/direwolf.conf
 # set the port number for KISS
 echo "KISSPORT 8001" >> ~/direwolf.conf
+# add a line to the crontab to auto-start/check direwolf each minute
+# without fear of duplication in the crontab
+croncmd="~/hfaconfig/dw-start.sh"
+cronjob="* * * * * $croncmd"
+( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 #
 echo "Setup and Configuration of the HF Alerting Station Complete....rebooting"
 sudo reboot
