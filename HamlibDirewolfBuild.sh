@@ -108,5 +108,3 @@ echo "Hamlib and Direwolf installation is complete."
 echo "It's time to build the direwolf.conf file."
 
 ./SetupDirewolf.sh $mycall
-# the end
-exit 0

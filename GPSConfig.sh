@@ -23,4 +23,3 @@ sudo systemctl restart chrony
 #
 # Direwolf needs a line to gather the position information
 echo "GPSD localhost" >> ~/direwolf.conf
-exit 0

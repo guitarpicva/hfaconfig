@@ -37,9 +37,8 @@ echo "AGWPORT 0" >> ~/direwolf.conf
 # set the port number for KISS
 echo "KISSPORT 8001" >> ~/direwolf.conf
  # change dw-start.sh to put the log in the home folder for convenience
-	sed -i '/LOGFILE=/var/tmp/dw-start.log/LOGFILE=~/dwstart.log/g' ~/dw-start.sh
-	# set to CLI mode only
-	sed -i 's/RUNMODE=AUTO/RUNMODE=CLI/g' ~/dw-start.sh
-	sed -i 's/DIREWOLF=direwolf/DIREWOLF=/usr/local/bin/direwolf/g' ~/dw-start.sh
-	sed -i 's/DWCMD=$DIREWOLF/DWCMD=$DIREWOLF -I 1/g' ~/dw-start.sh
-exit 0
+sed -i '/LOGFILE=/var/tmp/dw-start.log/LOGFILE=~/dwstart.log/g' ~/dw-start.sh
+# set to CLI mode only
+sed -i 's/RUNMODE=AUTO/RUNMODE=CLI/g' ~/dw-start.sh
+sed -i 's/DIREWOLF=direwolf/DIREWOLF=/usr/local/bin/direwolf/g' ~/dw-start.sh
+sed -i 's/DWCMD=$DIREWOLF/DWCMD=$DIREWOLF -I 1/g' ~/dw-start.sh
