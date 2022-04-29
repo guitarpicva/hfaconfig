@@ -20,7 +20,7 @@ sounders=${sounders:5:1}
 
 serial=$( ls /dev/serial/by-id|grep _B-if00 )
 cd ~
-sudo ln -s "/dev/serial/by-id/$serial" /dev/f8101_civ
+sudo ln -s "$serial" /dev/f8101_civ
 
 echo "ADEVICE  plughw:$sounders,0" > ~/direwolf.conf
 echo "CHANNEL 0" >> ~/direwolf.conf
