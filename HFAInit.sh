@@ -53,6 +53,6 @@ then
 	sudo systemctl enable ssh
 	sudo systemctl start sshd
 
-	# Run the clone and compile script HamlibDirewolfBuild.sh
+	# Run the clone-and-compile script HamlibDirewolfBuild.sh
 	~/hfaconfig/HamlibDirewolfBuild.sh
 fi
