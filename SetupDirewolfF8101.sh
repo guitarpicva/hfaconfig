@@ -23,6 +23,9 @@ sounders=${sounders:5:1}
 
 serial=$( ls /dev/serial/by-id|grep _B-if00 )
 cd ~
+# This bit is done here so we can test immediately.
+# It is also done each time dw-start.sh is run with
+# a test to see if /dev/f8101_civ exists or not
 sudo rm -f /dev/f8101_civ
 sudo ln -fs /dev/serial/by-id/$serial /dev/f8101_civ
 
@@ -30,9 +33,6 @@ echo "ADEVICE  plughw:$sounders,0" > ~/direwolf.conf
 echo "CHANNEL 0" >> ~/direwolf.conf
 echo "MYCALL $mycall" >> ~/direwolf.conf
 echo "MODEM 300 1600:1800 3@20" >> ~/direwolf.conf
-# "radio" corresponds to a symlink in the home
-# folder which points to the proper device from
-# /dev/serial/by-id
 echo "PTT RIG 3086 /dev/f8101_civ 38400" >> ~/direwolf.conf
 # a short TXDELAY of 30 ms
 echo "TXDELAY 3" >> ~/direwolf.conf
