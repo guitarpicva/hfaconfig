@@ -7,6 +7,10 @@ then
     if [[ $mycall =~ [A-Za-z0-9]{5,6} ]]
     then
         echo "Good Call Sign"
+    else
+        echo "Bad Call Sign...giving up"
+        return
+    fi
 else
     mycall=$1
 fi

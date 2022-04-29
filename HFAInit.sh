@@ -54,5 +54,5 @@ then
 	sudo systemctl start sshd
 
 	# Run the clone-and-compile script HamlibDirewolfBuild.sh
-	~/hfaconfig/HamlibDirewolfBuild.sh
+	. ~/hfaconfig/HamlibDirewolfBuild.sh
 fi

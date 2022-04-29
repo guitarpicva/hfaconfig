@@ -6,7 +6,7 @@
 ## This line needs to be added to the /etc/chrony/chrony.conf at the end
 #refclock SHM 0 offset 0.5 delay 0.2 refid NMEA
 echo "refclock SHM 0 offset 0.5 delay 0.2 refid NMEA" >> /etc/chrony/chrony.conf
-# 
+#
 # Also need to update /etc/default/gpsd
 ############
 # Usually the GPS USB device is /dev/ttyACM0 once plugged in

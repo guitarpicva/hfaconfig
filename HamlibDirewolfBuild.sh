@@ -72,14 +72,6 @@ make install-conf
 mv ~/direwolf.conf ~/direwolf.conf.example
 # END Direwolf install
 #############################################
-# Cleanup
-#############################################
-# 
-# Now create the basic direwolf.conf file for the mosquitto broker.
-# This file is placed into /etc/mosquitto/conf.d/direwolf.conf
-# THIS IS NOT THE DIREWOLF CONFIGURATION FILE!  This is the MQTT
-# broker's configuration file, but we are using it with direwolf
-# hence the name.
 echo "Setting up MQTT broker (mosquitto) on all local interfaces."
 sudo echo "listener 1883" > /etc/mosquitto/conf.d/direwolf.conf
 sudo echo "protocol mqtt" >> /etc/mosquitto/conf.d/direwolf.conf
@@ -106,5 +98,4 @@ echo "It took $mins:$secs to do the cloning and compiling and installing."
 wait 1
 echo "Hamlib and Direwolf installation is complete."
 echo "It's time to build the direwolf.conf file."
-
-./SetupDirewolf.sh $mycall
+. ~/hfaconfig/SetupDirewolf.sh $mycall
