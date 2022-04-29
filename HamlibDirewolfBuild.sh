@@ -20,6 +20,19 @@ if [[ $answer == [Nn] ]]
 then 
 return
 fi
+if [ $# -eq 0 ]
+then
+    echo "First, let's gather the station call sign."
+    echo ""
+    read -p "Enter this station's VOICE call sign: " mycall
+    if [[ $mycall =~ [A-Za-z0-9]{5,6} ]]
+    then
+    fi
+else
+    mycall=$1
+fi
+# make it upper case
+mycall=${mycall^^}
 START_TIME=$(date +%s)
 mkdir -p ~/src
 cd ~/src
@@ -28,7 +41,7 @@ cd ~/src
 sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove -y
-sudo apt install build-essential git cmake libasound2-dev libudev-dev libtool dos2unix telnet mosquitto mosquitto-clients -y
+sudo apt install build-essential git cmake libasound2-dev libudev-dev libtool dos2unix telnet mosquitto mosquitto-clients screen chrony gpsd gpsd-clients -y
 #############################################
 # START HAMLIB
 # First, get Hamlib if required, comment out if not
@@ -71,14 +84,7 @@ echo "It took $mins:$secs to do the cloning and compiling and installing."
 wait 1
 echo "Hamlib and Direwolf installation is complete."
 echo "It's time to build the direwolf.conf file."
-echo "First, let's gather the station call sign."
-echo ""
-read -p "Enter this station's VOICE call sign: " mycall
-if [[ $mycall =~ [A-Za-z0-9]{5,6} ]]
-then
-    # make it upper case
-    mycall=${mycall^^}
-fi
+
 ./SetupDirewolf.sh $mycall
 # the end
 exit 0
