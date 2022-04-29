@@ -46,3 +46,6 @@ sed -i 's/LOGFILE=\/var\/tmp\/dw-start.log/LOGFILE=~\/dwstart.log/g' ~/dw-start.
 sed -i 's/RUNMODE=AUTO/RUNMODE=CLI/g' ~/dw-start.sh
 sed -i 's/DIREWOLF=\"direwolf\"/DIREWOLF=\"\/usr\/local\/bin\/direwolf\"/g' ~/dw-start.sh
 sed -i 's/DWCMD=\"$DIREWOLF -a 100\"/DWCMD=\"$DIREWOLF -I 1\"/g' ~/dw-start.sh
+#
+echo "Setup and Configuration of the HF Alerting Station Complete....rebooting"
+sudo reboot

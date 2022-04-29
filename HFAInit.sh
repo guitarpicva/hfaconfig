@@ -32,9 +32,19 @@ then
 elif [[ $answer == [Yy] ]]
 then
 	echo "New Install....got it."
+	echo "Plug the IC-F8101 USB cable into the Raspberry Pi"
+	read -p "Ready? (y/n)" ready
+	ready=${ready:0:1}
+	if[[ ready == [Yy] ]]
+	then
+		echo "Good...let's get going"
+	else
+		echo "OK, we'll stop until you are ready..."
+		return
+	fi
 	# Set some house-keeping
 	echo "Set alias for ll to ls -lA in .bashrc"
-	#echo "alias ll='ls -lA --color=auto'" >> ~/.bashrc
+	echo "alias ll='ls -lA --color=auto'" >> ~/.bashrc
 	echo "Turn off bcm audio and HDMI audio"
 	bmcline=grep /boot/config.txt 'dtparam=audio=on'
 	echo "BCM Audio Setting: $bcmline"

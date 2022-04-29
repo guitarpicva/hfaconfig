@@ -62,27 +62,32 @@ git clone https://github.com/wb2osz/direwolf.git
 # set to latest dev version to pick up GPS and other stuff
 cd ~/src/direwolf
 git checkout dev
-mkdir ~/src/direwolf/build && cd ~/src/direwolf/build
+mkdir -p ~/src/direwolf/build && cd ~/src/direwolf/build && rm -fr ~/src/direwolf/build/*
+patch -p 0 ~/src/direwolf/src/ptt.c ~/hfaconfig/dwptt.patch
 # if either of these fails, the script stops
 cmake .. && make -j3 
-sudo make install
-# create the boilerplate configuration file in the home directory
-make install-conf
+sudo make install 
+# don't create boilerplate conf files for this because 
+# we'll put our custom config files into it
+# in another script later.
+#make install-conf
 # and rename it.  ours is created below
 mv ~/direwolf.conf ~/direwolf.conf.example
 # END Direwolf install
 #############################################
 echo "Setting up MQTT broker (mosquitto) on all local interfaces."
-sudo echo "listener 1883" > /etc/mosquitto/conf.d/direwolf.conf
-sudo echo "protocol mqtt" >> /etc/mosquitto/conf.d/direwolf.conf
-sudo echo "#" >> /etc/mosquitto/conf.d/direwolf.conf
-sudo echo "connection hfabridge" >> /etc/mosquitto/conf.d/direwolf.conf
-sudo echo "address rpi0.homeip.net:8883" >> /etc/mosquitto/conf.d/direwolf.conf
+cd ~/hfaconfig
+sudo echo "listener 1883" > mqdirewolf.conf
+sudo echo "protocol mqtt" >> mqdirewolf.conf
+sudo echo "#" >> mqdirewolf.conf
+sudo echo "connection hfabridge" >> mqdirewolf.conf
+sudo echo "address rpi0.homeip.net:8883" >> mqdirewolf.conf
 # bi-directional bridging of all things "alert"
-sudo echo "topic alert/# both" >> /etc/mosquitto/conf.d/direwolf.conf
+sudo echo "topic alert/# both" >> mqdirewolf.conf
 # bridge credentials
-sudo echo "remote_username Eph8Iequiesaexah" >> /etc/mosquitto/conf.d/direwolf.conf
-sudo echo "remote_password Dahshie1eevooCah" >> /etc/mosquitto/conf.d/direwolf.conf
+sudo echo "remote_username Eph8Iequiesaexah" >> mqdirewolf.conf
+sudo echo "remote_password Dahshie1eevooCah" >> mqdirewolf.conf
+sudo cp -f mqdirewolf.conf /etc/mosquitto/conf.d/direwolf.conf
 # just in case it got turned off somehow, it doesn't hurt to enable it
 sudo systemctl enable mosquitto
 # pick up the new configuration file
