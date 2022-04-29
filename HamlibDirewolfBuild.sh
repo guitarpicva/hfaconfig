@@ -75,18 +75,8 @@ sudo make install
 mv ~/direwolf.conf ~/direwolf.conf.example
 # END Direwolf install
 #############################################
-echo "Setting up MQTT broker (mosquitto) on all local interfaces."
+echo "Setting up MQTT broker (mosquitto) on all localhost and bridge."
 cd ~/hfaconfig
-sudo echo "listener 1883" > mqdirewolf.conf
-sudo echo "protocol mqtt" >> mqdirewolf.conf
-sudo echo "#" >> mqdirewolf.conf
-sudo echo "connection hfabridge" >> mqdirewolf.conf
-sudo echo "address rpi0.homeip.net:8883" >> mqdirewolf.conf
-# bi-directional bridging of all things "alert"
-sudo echo "topic alert/# both" >> mqdirewolf.conf
-# bridge credentials
-sudo echo "remote_username Eph8Iequiesaexah" >> mqdirewolf.conf
-sudo echo "remote_password Dahshie1eevooCah" >> mqdirewolf.conf
 sudo cp -f mqdirewolf.conf /etc/mosquitto/conf.d/direwolf.conf
 # just in case it got turned off somehow, it doesn't hurt to enable it
 sudo systemctl enable mosquitto

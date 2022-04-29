@@ -169,7 +169,7 @@ sleep 10
 # Nothing to do if Direwolf is already running.
 #
 
-a=`ps ax | grep direwolf | grep -vi -e bash -e screen -e grep | awk '{print $1}'`
+a=`ps ax | grep $DWCMD | grep -vi -e bash -e screen -e grep | awk '{print $1}'`
 if [ -n "$a" ]
 then
   #date >> /tmp/dw-start.log
