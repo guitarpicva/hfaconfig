@@ -17,7 +17,7 @@ cd ~/hfaconfig
 # Show the list of existing files
 ls -lA --color=auto
 # Set all scripts to be executable
-chmod u+x *.sh
+#chmod u+x *.sh
 # Query the user to see if we need to do the first time compiling
 read -p "Is this an initial installation on a clean RPi OS? (y/N) " answer
 # only take the first letter of the reply

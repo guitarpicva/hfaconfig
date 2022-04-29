@@ -6,6 +6,7 @@ then
     read -p "Enter this station's VOICE call sign: " mycall
     if [[ $mycall =~ [A-Za-z0-9]{5,6} ]]
     then
+        echo "Good Call Sign"
     fi
 else
     mycall=$1
