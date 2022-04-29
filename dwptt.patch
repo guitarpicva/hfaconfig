@@ -1,0 +1,12 @@
+--- ptt.c       2022-04-29 19:43:56.333463664 +0100
++++ pttmw.c     2022-04-29 20:23:34.619025392 +0100
+@@ -1308,7 +1308,7 @@
+
+          if (rig[chan][ot] != NULL) {
+
+-           int retcode = rig_set_ptt(rig[chan][ot], RIG_VFO_CURR, ptt ? RIG_PTT_ON : RIG_PTT_OFF);
++           int retcode = rig_set_ptt(rig[chan][ot], RIG_VFO_CURR, ptt ? RIG_PTT_ON_DATA : RIG_PTT_OFF);
+
+            if (retcode != RIG_OK) {
+              text_color_set(DW_COLOR_ERROR);
+              
