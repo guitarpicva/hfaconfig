@@ -52,12 +52,7 @@ then
 	echo "Enabling and Starting sshd server..."
 	sudo systemctl enable ssh
 	sudo systemctl start sshd
-    # change dw-start.sh to put the log in the home folder for convenience
-	sed -i '/LOGFILE=/var/tmp/dw-start.log/LOGFILE=~/dwstart.log/g' ~/dw-start.sh
-	# set to CLI mode only
-	sed -i 's/RUNMODE=AUTO/RUNMODE=CLI/g' ~/dw-start.sh
-	sed -i 's/DIREWOLF=direwolf/DIREWOLF=/usr/local/bin/direwolf/g' ~/dw-start.sh
-	sed -i 's/DWCMD=$DIREWOLF/DWCMD=$DIREWOLF -I 1/g' ~/dw-start.sh
+   
 	# 
 	# Now create the basic direwolf.conf file for the mosquitto broker.
 	# This file is placed into /etc/mosquitto/conf.d/direwolf.conf
