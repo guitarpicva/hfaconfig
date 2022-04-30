@@ -42,7 +42,7 @@ cd ~/src
 sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove -y
-sudo apt install build-essential git cmake libasound2-dev libudev-dev libtool dos2unix telnet mosquitto mosquitto-clients screen chrony gpsd gpsd-clients libgps-dev -y
+sudo apt install dialog git cmake libasound2-dev libudev-dev libtool dos2unix telnet mosquitto mosquitto-clients screen chrony gpsd gpsd-clients libgps-dev -y
 #############################################
 # START HAMLIB
 # First, get Hamlib if required, comment out if not
