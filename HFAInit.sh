@@ -6,6 +6,12 @@
 #
 # Author, Mitch Winkle AB4MW 2022-04-23
 ########################################################################
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# TO GET THIS SCRIPT IN THE FIRST PLACE AND RUN IT ON A NEW SYSTEM:
+# wget -O - http://<this is the URI of the script>.sh | bash
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+########################################################################
+
 # If not there, make it
 mkdir -p ~/hfaconfig
 cd ~/hfaconfig
@@ -33,9 +39,9 @@ elif [[ $answer == [Yy] ]]
 then
 	echo "New Install....got it."
 	echo "Plug the IC-F8101 USB cable into the Raspberry Pi"
-	read -p "Ready? (y/n)" ready
+	read -p "Ready? (y/n) " ready
 	ready=${ready:0:1}
-	if[[ ready == [Yy] ]]
+	if [[ "$ready" == [Yy] ]]
 	then
 		echo "Good...let's get going"
 	else
@@ -62,6 +68,8 @@ then
 	echo "Enabling and Starting sshd server..."
 	sudo systemctl enable ssh
 	sudo systemctl start sshd
+	# so the next script will work!
+	sudo apt install git -y 
 	# Run the clone-and-compile script HamlibDirewolfBuild.sh
 	. ~/hfaconfig/HamlibDirewolfBuild.sh
 fi
