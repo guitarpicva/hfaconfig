@@ -42,7 +42,7 @@ cd ~/src
 sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove -y
-sudo apt install dialog cmake libasound2-dev libudev-dev libtool dos2unix telnet mosquitto mosquitto-clients screen chrony gpsd gpsd-clients libgps-dev -y
+sudo apt install git dialog cmake libasound2-dev libudev-dev libtool dos2unix telnet mosquitto mosquitto-clients screen chrony gpsd gpsd-clients libgps-dev -y
 #############################################
 # START HAMLIB
 # First, get Hamlib if required, comment out if not
@@ -93,4 +93,5 @@ echo "It took $mins:$secs to do the cloning and compiling and installing."
 wait 1
 echo "Hamlib and Direwolf installation is complete."
 echo "It's time to build the direwolf.conf file."
-. ~/hfaconfig/SetupDirewolf.sh $mycall
+cd ~/hfaconfig
+. ./SetupDirewolf.sh $mycall

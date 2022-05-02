@@ -147,11 +147,23 @@ function GUI {
 # -----------------------------------------------------------
 # ensure that the CI-V serial port is created
 # if the link is not there, make it again
-if [ ! -e /dev/f8101_civ ]
-then
-    serial=$( ln /dev/serial/by-id|grep _B-if )
-    sudo ln -s /dev/serial/by-id/$serial /dev/f8101_civ
-fi
+#echo "Check and set "
+# remove existing link
+sudo rm -f /dev/f8101_civ
+serial=$( ls /dev/serial/by-id|grep _B-if )
+# replace with current link
+sudo ln -s /dev/serial/by-id/$serial /dev/f8101_civ
+
+# now ensure that the proper sound card is selected for the F8101
+sounders=$( aplay -l|grep 'USB Audio CODEC' )
+# get only the card numeral
+sounders=${sounders:5:1}
+
+# remove the existing ADEVICE line and put in a new one
+# as the first line of the file
+sed -i '/ADEVICE /d' ~/direwolf.conf
+sed -i "1 iADEVICE plughw:$sounders,0" ~/direwolf.conf
+
 # When running from cron, we have a very minimal environment
 # including PATH=/usr/bin:/bin.
 #

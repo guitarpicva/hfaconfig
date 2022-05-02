@@ -13,15 +13,16 @@
 ########################################################################
 
 # If not there, make it
-mkdir -p ~/hfaconfig
-cd ~/hfaconfig
+#mkdir -p ~/hfaconfig
+#cd ~/hfaconfig
+# NOT! git will do this when it clones the rest of the files
 #
 # This gives us all of the configuration files for our system in the
 # ~/hfaconfig directory, which is where cron and other programs will
 # find their configuration files (direwolf.conf, etc.)
 #
 # Show the list of existing files
-ls -lA --color=auto
+#ls -lA --color=auto
 # Set all scripts to be executable
 #chmod u+x *.sh
 # Query the user to see if we need to do the first time compiling
@@ -46,6 +47,7 @@ then
 		echo "Good...let's get going"
 	else
 		echo "OK, we'll stop until you are ready..."
+		echo "Run this script again once the radio is plugged into a USB port."
 		return
 	fi
 	# Set some house-keeping
@@ -70,6 +72,7 @@ then
 	sudo systemctl start sshd
 	# so the next script will work!
 	sudo apt install git -y 
+	git clone https://github.com/guitarpicva/hfaconfig.git
 	# Run the clone-and-compile script HamlibDirewolfBuild.sh
 	. ~/hfaconfig/HamlibDirewolfBuild.sh
 fi
