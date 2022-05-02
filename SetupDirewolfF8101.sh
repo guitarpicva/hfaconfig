@@ -18,11 +18,11 @@ fi
 mycall=${mycall^^} 
 
 
-serial=$( ls /dev/serial/by-id|grep _B-if00 )
+serial=$( ls /dev/serial/by-id|grep _B-if )
 cd ~
 # This bit is done here so we can test immediately.
 # It is also done each time dw-start.sh is run with
-# a test to see if /dev/f8101_civ exists or not
+# a test to find the correct serial port
 sudo rm -f /dev/f8101_civ
 sudo ln -fs /dev/serial/by-id/$serial /dev/f8101_civ
 
