@@ -72,6 +72,7 @@ then
 	sudo systemctl start sshd
 	# so the next script will work!
 	sudo apt install git -y 
+	cd ~
 	git clone https://github.com/guitarpicva/hfaconfig.git
 	# Run the clone-and-compile script HamlibDirewolfBuild.sh
 	. ~/hfaconfig/HamlibDirewolfBuild.sh

@@ -29,8 +29,7 @@ sudo ln -fs /dev/serial/by-id/$serial /dev/f8101_civ
 # it's a fair bet that the F8101 is the only sound card 
 # connected with this signature
 
-# the sound card numeral will likely changes
-# after the reboot process and the overlay and
+# the sound card numeral will likely change after the reboot process and the overlay and
 # bcm sound are disabled.  dw-start.sh will set it properly each time it starts direwolf
 sounders=$( aplay -l|grep 'USB Audio CODEC' )
 sounders=${sounders:5:1}
