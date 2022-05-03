@@ -86,8 +86,8 @@ then
 	else
     	mycall=$1
 	fi
-# make it upper case
-mycall=${mycall^^}
+	# make it upper case
+	mycall=${mycall^^}
 	# Run the clone-and-compile script HamlibDirewolfBuild.sh
 	. ~/hfaconfig/HamlibDirewolfBuild.sh
 	# Now run the Direwolf configuration builder script
