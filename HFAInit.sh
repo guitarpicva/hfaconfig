@@ -59,7 +59,7 @@ then
 	bcmline=${bcmline:0:1}
 	if [[ $bcmline != [#] ]]
 	then 
-	# use sed to remove the leading "#" from dtparam audio=off 
+	# use sed to add the leading "#" to the dtparam audio=off line
 	sudo sed -i 's/dtparam=audio=on/#dtparam=audio=on/g' /boot/config.txt
 	fi
 	# append a line to turn off the HDMI audio since it will never be used
@@ -76,4 +76,6 @@ then
 	git clone https://github.com/guitarpicva/hfaconfig.git
 	# Run the clone-and-compile script HamlibDirewolfBuild.sh
 	. ~/hfaconfig/HamlibDirewolfBuild.sh
+	# Now run the Direwolf configuration builder script
+	. ~/hfaconfig/SetupDirewolfF8101.sh
 fi

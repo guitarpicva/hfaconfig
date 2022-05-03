@@ -51,5 +51,6 @@ croncmd="~/hfaconfig/dw-start.sh"
 cronjob="* * * * * $croncmd"
 ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 #
+chmod +x ~/hfaconfig/dw-start.sh 
 echo "Setup and Configuration of the HF Alerting Station Complete....rebooting"
 sudo reboot

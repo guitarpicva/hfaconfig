@@ -63,7 +63,10 @@ git clone https://github.com/wb2osz/direwolf.git
 cd ~/src/direwolf
 git checkout dev
 mkdir -p ~/src/direwolf/build && cd ~/src/direwolf/build && rm -fr ~/src/direwolf/build/*
-patch -p 0 ~/src/direwolf/src/ptt.c ~/hfaconfig/dwptt.patch
+#
+######## THIS IS DANGEROUS ##########################
+sed -i 's/RIG_PTT_ON/RIG_PTT_ON_DATA/g' ./src/ptt.c
+#####################################################
 # if either of these fails, the script stops
 cmake .. && make -j3 
 sudo make install 
@@ -93,5 +96,4 @@ echo "It took $mins:$secs to do the cloning and compiling and installing."
 wait 1
 echo "Hamlib and Direwolf installation is complete."
 echo "It's time to build the direwolf.conf file."
-cd ~/hfaconfig
-. ./SetupDirewolf.sh $mycall
+return 0
