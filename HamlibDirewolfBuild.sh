@@ -20,20 +20,7 @@ if [[ $answer == [Nn] ]]
 then 
 return
 fi
-if [ $# -eq 0 ]
-then
-    echo "First, let's gather the station call sign."
-    echo ""
-    read -p "Enter this station's VOICE call sign: " mycall
-    if [[ $mycall =~ [A-Za-z0-9]{5,6} ]]
-    then
-    echo "Good callsign..."
-    fi
-else
-    mycall=$1
-fi
-# make it upper case
-mycall=${mycall^^}
+
 START_TIME=$(date +%s)
 mkdir -p ~/src
 cd ~/src
@@ -62,10 +49,12 @@ git clone https://github.com/wb2osz/direwolf.git
 # set to latest dev version to pick up GPS and other stuff
 cd ~/src/direwolf
 git checkout dev
-mkdir -p ~/src/direwolf/build && cd ~/src/direwolf/build && rm -fr ~/src/direwolf/build/*
+mkdir -p ~/src/direwolf/build
+cd ~/src/direwolf/build
+rm -fr ~/src/direwolf/build/*
 #
 ######## THIS IS DANGEROUS ##########################
-sed -i 's/RIG_PTT_ON/RIG_PTT_ON_DATA/g' ./src/ptt.c
+sed -i 's/RIG_PTT_ON /RIG_PTT_ON_DATA /g' ~/src/direwolf/src/ptt.c
 #####################################################
 # if either of these fails, the script stops
 cmake .. && make -j3 

@@ -74,8 +74,22 @@ then
 	sudo apt install git -y 
 	cd ~
 	git clone https://github.com/guitarpicva/hfaconfig.git
+	if [ $# -eq 0 ]
+	then
+    	echo "First, let's gather the station call sign."
+    	echo ""
+    	read -p "Enter this station's VOICE call sign: " mycall
+    	if [[ $mycall =~ [A-Za-z0-9]{5,6} ]]
+    	then
+    	echo "Good callsign..."
+    	fi
+	else
+    	mycall=$1
+	fi
+# make it upper case
+mycall=${mycall^^}
 	# Run the clone-and-compile script HamlibDirewolfBuild.sh
 	. ~/hfaconfig/HamlibDirewolfBuild.sh
 	# Now run the Direwolf configuration builder script
-	. ~/hfaconfig/SetupDirewolfF8101.sh
+	. ~/hfaconfig/SetupDirewolfF8101.sh $mycall
 fi
