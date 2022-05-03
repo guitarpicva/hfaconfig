@@ -54,7 +54,7 @@ cd ~/src/direwolf/build
 rm -fr ~/src/direwolf/build/*
 #
 ######## THIS IS DANGEROUS ##########################
-sed -i 's/RIG_PTT_ON /RIG_PTT_ON_DATA /g' ~/src/direwolf/src/ptt.c
+sed -i 's/RIG_PTT_ON :/RIG_PTT_ON_DATA :/g' ~/src/direwolf/src/ptt.c
 #####################################################
 # if either of these fails, the script stops
 cmake .. && make -j3 
