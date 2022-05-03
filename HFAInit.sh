@@ -54,7 +54,7 @@ then
 	echo "Set alias for ll to ls -lA in .bashrc"
 	echo "alias ll='ls -lA --color=auto'" >> ~/.bashrc
 	echo "Turn off bcm audio and HDMI audio"
-	bmcline=grep /boot/config.txt 'dtparam=audio=on'
+	bmcline=grep 'dtparam=audio=on' /boot/config.txt 
 	echo "BCM Audio Setting: $bcmline"
 	bcmline=${bcmline:0:1}
 	if [[ $bcmline != [#] ]]
