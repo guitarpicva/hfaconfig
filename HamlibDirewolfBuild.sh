@@ -67,13 +67,6 @@ sudo make install
 mv ~/direwolf.conf ~/direwolf.conf.example
 # END Direwolf install
 #############################################
-echo "Setting up MQTT broker (mosquitto) on all localhost and bridge."
-cd ~/hfaconfig
-sudo cp -f mqdirewolf.conf /etc/mosquitto/conf.d/direwolf.conf
-# just in case it got turned off somehow, it doesn't hurt to enable it
-sudo systemctl enable mosquitto
-# pick up the new configuration file
-sudo systemctl restart mosquitto
 cd ~
 END_TIME=$(date +%s)
 secs=$(( $END_TIME - $START_TIME ))

@@ -62,6 +62,14 @@ then
 	# use sed to add the leading "#" to the dtparam audio=off line
 	sudo sed -i 's/dtparam=audio=on/#dtparam=audio=on/g' /boot/config.txt
 	fi
+	# Mosquitto config
+	echo "Setting up MQTT broker (mosquitto) on all localhost and bridge."
+	cd ~/hfaconfig
+	sudo cp -f mqdirewolf.conf /etc/mosquitto/conf.d/direwolf.conf
+	# just in case it got turned off somehow, it doesn't hurt to enable it
+	sudo systemctl enable mosquitto
+	# pick up the new configuration file
+	sudo systemctl restart mosquitto
 	# append a line to turn off the HDMI audio since it will never be used
 	# in a headless RPi
 	# first delete any existing line
