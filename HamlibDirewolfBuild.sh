@@ -12,14 +12,7 @@
 #############################################
 echo "This script will download, compile and install Hamlib and Direwolf."
 echo ""
-echo "Do NOT run this on an existing HF Alerting system unless instructed to."
 echo ""
-read -p "Continue? (y/N) " answer
-answer=${answer:0:1}
-if [[ $answer == [Nn] ]]
-then 
-return
-fi
 
 START_TIME=$(date +%s)
 mkdir -p ~/src
