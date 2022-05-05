@@ -24,12 +24,7 @@ fi
 START_TIME=$(date +%s)
 mkdir -p ~/src
 cd ~/src
-#############################################
-# Install required packages to a clean RPi OS box
-sudo apt update
-sudo apt upgrade -y
-sudo apt autoremove -y
-sudo apt install git dialog cmake libasound2-dev libudev-dev libtool dos2unix telnet mosquitto mosquitto-clients screen chrony gpsd gpsd-clients libgps-dev -y
+
 #############################################
 # START HAMLIB
 # First, get Hamlib if required, comment out if not
