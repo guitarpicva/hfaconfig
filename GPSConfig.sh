@@ -18,10 +18,10 @@ sudo echo "refclock SHM 0 offset 0.5 delay 0.2 refid NMEA" >> /etc/chrony/chrony
 # regarding to the GPS receiver
 
 # Usually the GPS USB device is /dev/ttyACM0 once plugged in
-# NOTE: This will kill the existing gpsd file, so let's make a copy 
+# NOTE: This will edit the existing std. gpsd file, so let's make a copy 
 sudo cp /etc/default/gpsd /etc/default/gpsd.orig
-sudo echo 's|DEVICES=\"\"|DEVICES=\"/dev/ttyACM0\"|g' /etc/default/gpsd
-sudo echo 's|GPSD_OPTIONS=\"\"|GPSD_OPTIONS=\"-n\"|g' /etc/default/gpsd
+sudo sed 's|DEVICES=\"\"|DEVICES=\"/dev/ttyACM0\"|g' /etc/default/gpsd
+sudo sed 's|GPSD_OPTIONS=\"\"|GPSD_OPTIONS=\"-n\"|g' /etc/default/gpsd
 #
 #
 # Now restart everything 
