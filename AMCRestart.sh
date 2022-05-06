@@ -3,4 +3,4 @@
 sudo killall AlertManagerConsole
 sleep 3
 ~/AlertManagerConsole/AlertManagerConsole &
-exit 0
+exit 0 
