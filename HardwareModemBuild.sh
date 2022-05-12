@@ -16,14 +16,6 @@ echo ""
 
 START_TIME=$(date +%s)
 mkdir -p ~/src
-cd ~/src
-git clone https://github.com/qt/qtmqtt.git -b 5.15.2
-cd qtmqtt
-mkdir build
-cd build
-qmake .. && make -j3
-sudo make install
-echo "Library installation is complete."
 # MQTT is now installed and we can compile AlertManagerConsole
 cd ~/src/
 git clone git@192.168.0.151:/home/git/AlertManagerConsole.git
