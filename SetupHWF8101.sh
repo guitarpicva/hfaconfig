@@ -1,21 +1,39 @@
 #!/bin/bash
-# if [ $# -eq 0 ]
-# then
-#     echo "First, let's gather the station call sign."
-#     echo ""
-#     read -p "Enter this station's VOICE call sign: " mycall
-#     if [[ $mycall =~ [A-Za-z0-9]{5,6} ]]
-#     then
-#         echo "Good Call Sign"
-#     else
-#         echo "Bad Call Sign...giving up"
-#         return
-#     fi
-# else
-#     mycall=$1
-# fi
-# # make it upper case
-# mycall=${mycall^^} 
+if [ $# -eq 0 ]
+then
+    echo "First, let's gather the station call sign."
+    echo ""
+    read -p "Enter this station's VOICE call sign: " mycall
+    if [[ $mycall =~ [A-Za-z0-9]{5,6} ]]
+    then
+        echo "Good Call Sign"
+    else
+        echo "Bad Call Sign...giving up"
+        return
+    fi
+else
+    mycall=$1
+fi
+# make it upper case
+mycall=${mycall^^} 
+# now we can use the call sign to create or overwrite 
+# a boilerplate for AlertManager.ini
+INI=~/AlertManagerConsole/AlertManager.ini
+echo "[General]" > $INI
+echo "heardList=" >> $INI
+echo "firstChannelName=14854000" >> $INI
+echo "secondChannelName=4955500" >> $INI
+echo "firstTxTime=17" >> $INI
+echo "secondTxTime=47" >> $INI
+echo "mycall=$mycall" >> $INI
+echo "tactical=" >> $INI
+echo "tcp_address=localhost" >> $INI
+echo "tcp_port=8001" >> $INI
+echo "useZULUTime=true" >> $INI
+echo "alertBeaconEnabled=true" >> $INI
+echo "mqttHost=rpi0.homeip.net" >> $INI
+echo "mqttPort=8883" >> $INI
+echo "radioSerialPort=$HOME/f8101_civ" >> $INI
 
 serial=$( ls /dev/serial/by-id|grep _B-if )
 # ensure local folder holds the radio serial port link
