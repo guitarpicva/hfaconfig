@@ -48,7 +48,7 @@ echo "KISSPORT 8001" >> ~/direwolf.conf
 # add a line to the crontab to auto-start/check direwolf each minute
 # without fear of duplication in the crontab
 croncmd="~/hfaconfig/dw-start.sh"
-cronjob="* * * * * $croncmd"
+cronjob="* * * * * $croncmd > /dev/null 2>&1"
 ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 #
 chmod +x ~/hfaconfig/dw-start.sh 

@@ -27,7 +27,7 @@ sudo ln -fs /dev/serial/by-id/$serial $HOME/f8101_civ
 # add a line to the crontab to auto-start/check direwolf each minute
 # without fear of duplication in the crontab
 croncmd="~/AlertManagerConsole/amcstart.sh"
-cronjob="* * * * * $croncmd"
+cronjob="* * * * * $croncmd > /dev/null 2>&1"
 ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 #
 chmod +x ~/AlertManagerConsole/amcstart.sh
