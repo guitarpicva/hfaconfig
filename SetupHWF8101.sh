@@ -57,5 +57,6 @@ chmod +x ~/AlertManagerConsole/amcstart.sh
 #( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 #
 #chmod +x ~/hfaconfig/dw-start.sh 
-echo "Setup and Configuration of the HF Alerting HW Modem Station Complete....rebooting"
+echo "Setup and Configuration of the HF Alerting"
+echo "HW Modem Station Complete....rebooting"
 sudo reboot
