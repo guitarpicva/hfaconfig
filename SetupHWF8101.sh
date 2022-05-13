@@ -1,21 +1,21 @@
 #!/bin/bash
-if [ $# -eq 0 ]
-then
-    echo "First, let's gather the station call sign."
-    echo ""
-    read -p "Enter this station's VOICE call sign: " mycall
-    if [[ $mycall =~ [A-Za-z0-9]{5,6} ]]
-    then
-        echo "Good Call Sign"
-    else
-        echo "Bad Call Sign...giving up"
-        return
-    fi
-else
-    mycall=$1
-fi
-# make it upper case
-mycall=${mycall^^} 
+# if [ $# -eq 0 ]
+# then
+#     echo "First, let's gather the station call sign."
+#     echo ""
+#     read -p "Enter this station's VOICE call sign: " mycall
+#     if [[ $mycall =~ [A-Za-z0-9]{5,6} ]]
+#     then
+#         echo "Good Call Sign"
+#     else
+#         echo "Bad Call Sign...giving up"
+#         return
+#     fi
+# else
+#     mycall=$1
+# fi
+# # make it upper case
+# mycall=${mycall^^} 
 
 serial=$( ls /dev/serial/by-id|grep _B-if )
 # ensure local folder holds the radio serial port link
