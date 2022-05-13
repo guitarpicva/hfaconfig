@@ -18,13 +18,19 @@ fi
 mycall=${mycall^^} 
 
 serial=$( ls /dev/serial/by-id|grep _B-if )
-
-# a test to find the correct serial port
-sudo rm -f /dev/f8101_civ
-sudo ln -fs /dev/serial/by-id/$serial /dev/f8101_civ
+# ensure local folder holds the radio serial port link
+sudo ln -fs /dev/serial/by-id/$serial $HOME/f8101_civ
 
 # now we also know that the Nino TNC presents it's USB port
 # as /dev/ttyACM0
+#* * * * * /home/direwolf2/AlertManagerConsole/amcstart.sh >/dev/null 2>&1
+# add a line to the crontab to auto-start/check direwolf each minute
+# without fear of duplication in the crontab
+croncmd="~/AlertManagerConsole/amcstart.sh"
+cronjob="* * * * * $croncmd"
+( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
+#
+chmod +x ~/AlertManagerConsole/amcstart.sh
 
 # add a line to the crontab to auto-start/check direwolf each minute
 # without fear of duplication in the crontab

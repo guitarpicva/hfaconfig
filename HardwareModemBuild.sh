@@ -1,23 +1,17 @@
 #!/bin/bash
 #############################################
-# Hamlib-Direwolf latest builds for RPi2/3/4
-#
-# This script is intended for a clean
-# RPi OS installation with no previous
-# changes made to it.  This will run
-# on an RPi OS Lite version (headless), and 
-# that is the intended purpose, so even the 
-# RPi2 B+ may be used.
-# Author Mitch Winkle, AB4MW 2022-04-22 
+# Author Mitch Winkle, AB4MW 2022-05-11 
 #############################################
-echo "This script will download, compile and install necessary libraries."
+echo ""
+echo ""
+echo "This script will download, compile and install necessary applications."
 echo ""
 echo ""
 
 START_TIME=$(date +%s)
 mkdir -p ~/src
-# MQTT is now installed and we can compile AlertManagerConsole
 cd ~/src/
+# THIS CAN BE CHANGED TO A wget OF A tar.gz instead
 git clone git@192.168.0.151:/home/git/AlertManagerConsole.git
 cd AlertManagerConsole
 mkdir build
@@ -26,6 +20,7 @@ qmake .. && make -j3
 mkdir ~/AlertManagerConsole
 cp -f ./AlertManagerConsole ~/AlertManagerConsole/
 echo "Alert Manager Console installation is complete."
+# END THIS CAN BE CHANGED....
 
 END_TIME=$(date +%s)
 secs=$(( $END_TIME - $START_TIME ))
