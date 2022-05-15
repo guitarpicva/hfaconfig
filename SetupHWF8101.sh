@@ -27,7 +27,7 @@ mycall=${mycall^^}
         echo "Bad Numeral...using default of 17th minute."
         timeone=17
     fi
-timetwo=$timeone+30
+timetwo=$((timeone+30))
 echo "Second transmission at: $timetwo"
 # now we can use the call sign to create or overwrite 
 # a boilerplate for AlertManager.ini
