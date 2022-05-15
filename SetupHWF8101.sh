@@ -61,6 +61,7 @@ croncmd="~/AlertManagerConsole/amcstart.sh"
 cronjob="* * * * * $croncmd > /dev/null 2>&1"
 ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 #
+cp -f ~/hfaconfig/amcstart.sh ~/AlertManagerConsole
 chmod +x ~/AlertManagerConsole/amcstart.sh
 
 # add a line to the crontab to auto-start/check direwolf each minute
