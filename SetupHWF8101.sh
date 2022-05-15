@@ -16,6 +16,19 @@ else
 fi
 # make it upper case
 mycall=${mycall^^} 
+# now for first transmit minute
+    echo "What is the minute of your first hourly transmissioN?"
+    echo ""
+    read -p "Enter this station's first transmission minute: " timeone
+    if [[ $timeone =~ [0-9]{1,2} ]]
+    then
+        echo "Good Numeral, thank you."
+    else
+        echo "Bad Numeral...using default of 17th minute."
+        timeone=17
+    fi
+timetwo=$timeone+30
+echo "Second transmission at: $timetwo"
 # now we can use the call sign to create or overwrite 
 # a boilerplate for AlertManager.ini
 INI=~/AlertManagerConsole/AlertManager.ini
@@ -23,8 +36,8 @@ echo "[General]" > $INI
 echo "heardList=" >> $INI
 echo "firstChannelName=14854000" >> $INI
 echo "secondChannelName=4955500" >> $INI
-echo "firstTxTime=17" >> $INI
-echo "secondTxTime=47" >> $INI
+echo "firstTxTime=$timeone" >> $INI
+echo "secondTxTime=$timetwo" >> $INI
 echo "mycall=$mycall" >> $INI
 echo "tactical=" >> $INI
 echo "tcp_address=localhost" >> $INI
