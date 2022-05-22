@@ -12,14 +12,17 @@ START_TIME=$(date +%s)
 mkdir -p ~/src
 cd ~/src/
 # THIS CAN BE CHANGED TO A wget OF A tar.gz instead
-git clone git@192.168.0.151:/home/git/AlertManagerConsole.git
-cd AlertManagerConsole
-mkdir build
-cd build
-qmake .. && make -j3
-mkdir ~/AlertManagerConsole
-cp -f ./AlertManagerConsole ~/AlertManagerConsole/
+# git clone git@192.168.0.151:/home/git/AlertManagerConsole.git
+# cd AlertManagerConsole
+# mkdir build
+# cd build
+# qmake .. && make -j3
+mkdir -p ~/AlertManagerConsole
+cp -f ~/hfaconfig/AlertManagerConsole ~/AlertManagerConsole/
 echo "Alert Manager Console installation is complete."
+mkdir -p ~/UIConnect
+cp -f ~/hfaconfig/UIConnect ~/UIConnect/
+echo "UI Connect installation is complete."
 # END THIS CAN BE CHANGED....
 
 END_TIME=$(date +%s)
