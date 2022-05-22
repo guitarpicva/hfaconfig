@@ -19,9 +19,11 @@ cd ~/src/
 # qmake .. && make -j3
 mkdir -p ~/AlertManagerConsole
 cp -f ~/hfaconfig/AlertManagerConsole ~/AlertManagerConsole/
+chmod +x ~/AlertManagerConsole/AlertManagerConsole
 echo "Alert Manager Console installation is complete."
 mkdir -p ~/UIConnect
 cp -f ~/hfaconfig/UIConnect ~/UIConnect/
+chmod +x ~/UIConnect/UIConnect
 echo "UI Connect installation is complete."
 # END THIS CAN BE CHANGED....
 
