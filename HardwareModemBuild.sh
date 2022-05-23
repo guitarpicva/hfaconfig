@@ -9,8 +9,8 @@ echo ""
 echo ""
 
 START_TIME=$(date +%s)
-mkdir -p ~/src
-cd ~/src/
+# mkdir -p ~/src
+# cd ~/src/
 # THIS CAN BE CHANGED TO A wget OF A tar.gz instead
 # git clone git@192.168.0.151:/home/git/AlertManagerConsole.git
 # cd AlertManagerConsole
@@ -20,10 +20,12 @@ cd ~/src/
 mkdir -p ~/AlertManagerConsole
 cp -f ~/hfaconfig/AlertManagerConsole ~/AlertManagerConsole/
 chmod +x ~/AlertManagerConsole/AlertManagerConsole
+#cp -f ~/hfaconfig/AlertManagerConsole.desktop ~/.local/share/applications
 echo "Alert Manager Console installation is complete."
 mkdir -p ~/UIConnect
 cp -f ~/hfaconfig/UIConnect ~/UIConnect/
 chmod +x ~/UIConnect/UIConnect
+cp -f ~/hfaconfig/UIConnect.desktop ~/Desktop
 echo "UI Connect installation is complete."
 # END THIS CAN BE CHANGED....
 
