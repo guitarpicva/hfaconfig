@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=UI Connect
+Exec=XXXXX/UIConnect/UIConnect
+Comment=UI Connect
+Terminal=false
+Icon=gnome-panel-launcher
+Type=Application
+Path=XXXXX/UIConnect
