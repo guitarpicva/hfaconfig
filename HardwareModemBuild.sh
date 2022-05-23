@@ -26,6 +26,7 @@ mkdir -p ~/UIConnect
 cp -f ~/hfaconfig/UIConnect ~/UIConnect/
 chmod +x ~/UIConnect/UIConnect
 cp -f ~/hfaconfig/UIConnect.desktop ~/Desktop
+sed -i "s|XXXXX|$HOME|g" ~/UICOnnect/UIConnect.desktop
 echo "UI Connect installation is complete."
 # END THIS CAN BE CHANGED....
 
