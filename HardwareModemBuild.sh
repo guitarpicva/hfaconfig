@@ -22,11 +22,18 @@ cp -f ~/hfaconfig/AlertManagerConsole ~/AlertManagerConsole/
 chmod +x ~/AlertManagerConsole/AlertManagerConsole
 #cp -f ~/hfaconfig/AlertManagerConsole.desktop ~/.local/share/applications
 echo "Alert Manager Console installation is complete."
-mkdir -p ~/UIConnect
-cp -f ~/hfaconfig/UIConnect ~/UIConnect/
-chmod +x ~/UIConnect/UIConnect
-cp -f ~/hfaconfig/UIConnect.desktop ~/Desktop
-sed -i "s|XXXXX|$HOME|g" ~/UICOnnect/UIConnect.desktop
+desktop=`grep /boot/issue.txt stage4`
+if [ -z $desktop ]
+then
+    echo "Lite build"
+else
+    echo "Desktop build"
+    mkdir -p ~/UIConnect
+    cp -f ~/hfaconfig/UIConnect ~/UIConnect/
+    chmod +x ~/UIConnect/UIConnect
+    cp -f ~/hfaconfig/UIConnect.desktop ~/Desktop
+    sed -i "s|XXXXX|$HOME|g" ~/UICOnnect/UIConnect.desktop
+fi
 echo "UI Connect installation is complete."
 # END THIS CAN BE CHANGED....
 
