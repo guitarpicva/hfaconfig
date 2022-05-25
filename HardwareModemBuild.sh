@@ -4,7 +4,7 @@
 #############################################
 echo ""
 echo ""
-echo "This script will download, compile and install necessary applications."
+echo "This script will install necessary applications."
 echo ""
 echo ""
 
@@ -33,8 +33,9 @@ else
     chmod +x ~/UIConnect/UIConnect
     cp -f ~/hfaconfig/UIConnect.desktop ~/Desktop
     sed -i "s|XXXXX|$HOME|g" ~/UICOnnect/UIConnect.desktop
+    echo "UI Connect installation is complete."
 fi
-echo "UI Connect installation is complete."
+
 # END THIS CAN BE CHANGED....
 
 END_TIME=$(date +%s)

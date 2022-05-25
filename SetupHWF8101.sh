@@ -31,6 +31,8 @@ timetwo=$((timeone+30))
 echo "Second transmission at: $timetwo"
 # now we can use the call sign to create or overwrite 
 # a boilerplate for AlertManager.ini
+# just in case...
+mkdir -p ~/AlertManagerConsole
 INI=~/AlertManagerConsole/AlertManager.ini
 echo "[General]" > $INI
 echo "heardList=" >> $INI
@@ -47,10 +49,12 @@ echo "alertBeaconEnabled=true" >> $INI
 echo "mqttHost=rpi0.homeip.net" >> $INI
 echo "mqttPort=8883" >> $INI
 echo "radioSerialPort=$HOME/f8101_civ" >> $INI
+echo "modemSerialPort=/dev/ttyACM0" >> $INI
+echo "modemBaud=57600" >> $INI
 
 serial=$( ls /dev/serial/by-id|grep _B-if )
 # ensure local folder holds the radio serial port link
-sudo ln -fs /dev/serial/by-id/$serial $HOME/f8101_civ
+ln -fs /dev/serial/by-id/$serial $HOME/f8101_civ
 
 # now we also know that the Nino TNC presents it's USB port
 # as /dev/ttyACM0
