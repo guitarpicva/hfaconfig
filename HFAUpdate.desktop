@@ -2,7 +2,8 @@
 Name=HFA Update
 Exec=XXXXX/hfaconfig/HFAUpdate.sh
 Comment=HFA Update
-Terminal=false
+Terminal=true
+X-KeepTerminal=true
 Icon=gnome-panel-launcher
 Type=Application
 Path=XXXXX/hfaupdate
