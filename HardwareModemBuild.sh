@@ -23,6 +23,7 @@ chmod +x ~/AlertManagerConsole/AlertManagerConsole
 #cp -f ~/hfaconfig/AlertManagerConsole.desktop ~/.local/share/applications
 echo "Alert Manager Console installation is complete."
 desktop=`grep /boot/issue.txt stage4`
+echo "/boot/issue.txt= $desktop"
 if [ -z $desktop ]
 then
     echo "Lite build"
