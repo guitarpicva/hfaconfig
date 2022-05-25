@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=HFA Update
+Exec=XXXXX/hfaconfig/HFAUpdate.sh
+Comment=HFA Update
+Terminal=false
+Icon=gnome-panel-launcher
+Type=Application
+Path=XXXXX/hfaupdate
