@@ -35,6 +35,7 @@ else
     sed -i "s|XXXXX|$HOME|g" ~/UICOnnect/UIConnect.desktop
     cp -f ~/hfaconfig/UIConnect.desktop ~/Desktop
     echo "UI Connect installation is complete."
+    chmod +x ~/hfaconfig/HFAUpdate.sh
     sed -i "s|XXXXX|$HOME|g" ~/hfaconfig/HFAUpdate.desktop
     cp -f ~/hfaconfig/HFAUpdate.desktop ~/Desktop
     echo "HFA Update desktop icon installation is complete."
