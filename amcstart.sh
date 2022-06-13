@@ -83,20 +83,27 @@ else
   exit 0
 fi
 
+# Better be plugged in!!!
 # remove existing link not needed because we use ln -fs
-sudo rm -f $HOME/f8101_civ
+sudo rm -f "$HOME/f8101_civ"
 serial=$( ls /dev/serial/by-id|grep _B-if )
 # replace with current link as local user who is in dialout
 ln -fs /dev/serial/by-id/$serial $HOME/f8101_civ
 
+# now deal with the Nino modem
+# Better be plugged in!!!
+sudo rm -f "$HOME/modem"
+modem=$( ls /dev/serial/by-id|grep 2221 )
+ln -fs /dev/serial/by-id/$modem $HOME/modem
+
 # When running from cron, we have a very minimal environment
 # including PATH=/usr/bin:/bin.
 #
-export PATH=$HOME/AlertManagerConsole:$PATH
+# Don't need this because full path is at the top
+#export PATH=$HOME/AlertManagerConsole:$PATH
 
 #Log the start of the script run and re-run
 date >> $LOGFILE
-
-sleep 3
+sleep 1
 # Main execution of the startup scripting
 CLI

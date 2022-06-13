@@ -20,6 +20,8 @@ START_TIME=$(date +%s)
 mkdir -p ~/AlertManagerConsole
 cp -f ~/hfaconfig/AlertManagerConsole ~/AlertManagerConsole/
 chmod +x ~/AlertManagerConsole/AlertManagerConsole
+cp -f ~/hfaconfig/AlertManager.ini ~/AlertManagerConsole/
+sed -r "s|XXXXX|$HOM|g" ~/AlertManagerConsole/AlertManager.ini
 #cp -f ~/hfaconfig/AlertManagerConsole.desktop ~/.local/share/applications
 echo "Alert Manager Console installation is complete."
 desktop=`grep stage4 /boot/issue.txt`
