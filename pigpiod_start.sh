@@ -1,5 +1,6 @@
 #!/bin/bash
-# Run this from crontab periodically to start up AMC
+# Run this from crontab periodically to start up the pigpio daemon
+# required for modem mode changes from software
 # add any config params to this line
 AMC="sudo pigpiod"
 AMCCMD="$AMC"
