@@ -10,7 +10,8 @@ LOGFILE=~/pigpiod_start.log
 a=`ps ax | grep $AMCCMD | grep -vi -e bash -e grep | awk '{print $1}'`
 if [ -z "$a" ]
 then
-  echo "restarting pigpiod"
+  echo date >> $LOGFILE
+  echo "restarting pigpiod">> $LOGFILE
 else
   exit 0
 fi

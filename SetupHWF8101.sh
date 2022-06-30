@@ -68,6 +68,15 @@ cronjob="* * * * * $croncmd > /dev/null 2>&1"
 cp -f ~/hfaconfig/amcstart.sh ~/AlertManagerConsole
 chmod +x ~/AlertManagerConsole/amcstart.sh
 
+# add a line to the crontab to auto-start/check pigpiod each minute
+# without fear of duplication in the crontab
+croncmd="$HOME/pigpiod_start.sh"
+cronjob="* * * * * $croncmd > /dev/null 2>&1"
+( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
+#
+cp -f ~/hfaconfig/pigpiod_start.sh ~/
+chmod +x ~/pigpiod_start.sh
+
 # add a line to the crontab to auto-start/check direwolf each minute
 # without fear of duplication in the crontab
 #croncmd="~/hfaconfig/dw-start.sh"
