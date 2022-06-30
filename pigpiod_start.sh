@@ -3,12 +3,11 @@
 # required for modem mode changes from software
 # add any config params to this line
 AMC="sudo pigpiod"
-AMCCMD="$AMC"
 #Where will logs go - needs to be writable by non-root users
 # Put the log in the home folder so it's easy to find
 LOGFILE=~/pigpiod_start.log
 # Nothing to do if it is already running.
-a=`ps ax | grep $AMCCMD | grep -vi -e bash -e grep | awk '{print $1}'`
+a=`ps ax | grep $AMC | grep -vi -e bash -e grep | awk '{print $1}'`
 if [ -z "$a" ]
 then
   echo date >> $LOGFILE
